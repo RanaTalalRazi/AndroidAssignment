@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AndroidAssignment</string>
+
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="result">Result</string>
+    <string name="name">Name</string>
+    <string name="please_enter_name">Please Enter Name</string>
+    <string name="submit">Submit</string>
+    <string name="generic_error">Some error occurred please try again.</string>
+    <string name="no_internet">"Internet not available "</string>
+    <string name="no_internet_desc">We could not establish an internet connection to our service at the moment. Please make sure that you are connected to your network.</string>
+    <string name="try_again">Try Again</string>
+    <string name="age">"Age : "</string>
+    <string name="count">"Count : "</string>
+    <string name="no_data_found">No data found</string>
+
+
+</resources>
