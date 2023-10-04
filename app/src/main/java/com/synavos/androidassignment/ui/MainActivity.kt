@@ -72,7 +72,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             navController = rememberNavController()
-            MainScreen(navController = navController,viewModel)
+            MainScreen(navController = navController, viewModel)
         }
     }
 }
@@ -80,7 +80,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(
-    navController: NavHostController? = rememberNavController(),viewModel: MainViewModel
+    navController: NavHostController? = rememberNavController(), viewModel: MainViewModel
 ) {
     val currentOffset by remember { mutableStateOf(0f) }
 
@@ -104,7 +104,9 @@ fun MainScreen(
     Scaffold(content = { paddingValues ->
         Box(modifier = Modifier.offset { IntOffset(0, currentOffset.roundToInt()) }) {
             NavigationHost(
-                navController = navController, contentPadding = paddingValues, viewModel = viewModel
+                navController = navController,
+                contentPadding = paddingValues,
+                viewModel = viewModel
             )
         }
     }, bottomBar = {
@@ -120,6 +122,7 @@ fun MainScreen(
     }, containerColor = MaterialTheme.colorScheme.background
     )
 }
+
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
@@ -176,8 +179,7 @@ fun BottomNavigationBar(navController: NavHostController) {
 
 @Composable
 fun NavigationHost(
-    navController: NavHostController,
-    contentPadding: PaddingValues,viewModel: MainViewModel
+    navController: NavHostController, contentPadding: PaddingValues, viewModel: MainViewModel
 ) {
 
     var route = NavRoutes.Home.route
@@ -214,7 +216,7 @@ fun NavigationHost(
         composable(
             NavRoutes.MainScreen.route,
         ) {
-            MainScreen(navController,viewModel)
+            MainScreen(navController, viewModel)
         }
         composable(NavRoutes.Home.route) {
             HomeScreen(mainViewModel = viewModel)
@@ -223,7 +225,7 @@ fun NavigationHost(
             HistoryScreen()
         }
         composable(NavRoutes.Result.route) {
-            ResultScreen(mainViewModel=viewModel)
+            ResultScreen(mainViewModel = viewModel)
         }
 
     }
@@ -234,8 +236,7 @@ fun NavigationHost(
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    AndroidAssignmentTheme {
-    }
+    AndroidAssignmentTheme {}
 
 
 }

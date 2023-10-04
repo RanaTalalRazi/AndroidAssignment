@@ -22,12 +22,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(app: Application,
-                        callback: AndroidAssignmentDatabase.Callback
+    fun provideDatabase(
+        app: Application, callback: AndroidAssignmentDatabase.Callback
     ) = Room.databaseBuilder(app, AndroidAssignmentDatabase::class.java, DB_NAME)
-        .fallbackToDestructiveMigration()
-        .addCallback(callback)
-        .build()
+        .fallbackToDestructiveMigration().addCallback(callback).build()
 
     @ApplicationScope
     @Provides

@@ -39,8 +39,7 @@ fun UserList(
     ) {
         items(usersData) { content ->
             UserListDetailsItem(
-                content,
-                1
+                content, 1
 
             )
         }
@@ -73,10 +72,7 @@ fun UserListDetailsItem(
                     .height(100.dp)
                     .clip(
                         RoundedCornerShape(
-                            topStart = 10.dp,
-                            topEnd = 10.dp,
-                            bottomEnd = 0.dp,
-                            bottomStart = 0.dp
+                            topStart = 10.dp, topEnd = 10.dp, bottomEnd = 0.dp, bottomStart = 0.dp
                         )
                     )
             ) {
@@ -92,7 +88,6 @@ fun UserListDetailsItem(
                         textAlign = TextAlign.Start,
                         maxLines = maxLines,
                         overflow = TextOverflow.Ellipsis
-//                            color = textColor
                     )
                     CustomText(
                         fontFamily = font,
@@ -102,7 +97,6 @@ fun UserListDetailsItem(
                         textAlign = TextAlign.Start,
                         maxLines = maxLines,
                         overflow = TextOverflow.Ellipsis
-//                            color = textColor
                     )
                     CustomText(
                         fontFamily = font,
@@ -112,7 +106,6 @@ fun UserListDetailsItem(
                         textAlign = TextAlign.Start,
                         maxLines = maxLines,
                         overflow = TextOverflow.Ellipsis
-//                            color = textColor
                     )
                 }
 

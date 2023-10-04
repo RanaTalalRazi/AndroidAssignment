@@ -47,10 +47,11 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), mainViewModel: MainVi
 
     val uiState by viewModel.uiState.collectAsState()
     val name = rememberSaveable {
-        mutableStateOf(mainViewModel.userInput.value?:"")
+        mutableStateOf(mainViewModel.userInput.value ?: "")
     }
 
-    val isButtonEnable = rememberSaveable { mutableStateOf(mainViewModel.userInput.value?.isNotEmpty()?:false) }
+    val isButtonEnable =
+        rememberSaveable { mutableStateOf(mainViewModel.userInput.value?.isNotEmpty() ?: false) }
     Scaffold { paddingValues ->
         Surface(
             modifier = Modifier
@@ -85,8 +86,7 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), mainViewModel: MainVi
                             .padding(top = 30.dp)
                             .fillMaxWidth(),
                         keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Password,
-                            imeAction = ImeAction.Done
+                            keyboardType = KeyboardType.Password, imeAction = ImeAction.Done
                         ),
                         maxLines = 1,
                         errorMessage = stringResource(id = R.string.please_enter_name),
@@ -98,8 +98,7 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), mainViewModel: MainVi
                     ButtonPrimary(
                         onClick = {
                             if (shouldEnableButton(
-                                    isButtonEnable,
-                                    name.value
+                                    isButtonEnable, name.value
                                 )
                             ) {
                                 viewModel.getAge(name.value)

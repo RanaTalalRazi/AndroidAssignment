@@ -18,16 +18,17 @@ class HomeViewModel @Inject constructor(
     private val useCase: AgeUsecase, @ApplicationContext application: Context
 ) : BaseViewModel(application) {
 
-    fun getAge(name: String){
+    fun getAge(name: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val user=useCase.checkUserExist(name)
-            if (user==null){
+            val user = useCase.checkUserExist(name)
+            if (user == null) {
                 getAgeFromApi(name)
-            }else{
+            } else {
                 _uiState.emit(UiState.SUCCESS(user))
             }
         }
     }
+
     fun getAgeFromApi(name: String) {
         _uiState.tryEmit(UiState.LOADING)
         call({

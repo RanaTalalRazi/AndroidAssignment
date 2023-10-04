@@ -5,9 +5,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
-import androidx.compose.material.icons.sharp.Home
-import androidx.compose.material.icons.sharp.Info
-import androidx.compose.material.icons.sharp.List
 import com.synavos.androidassignment.R
 
 object NavBarItems {

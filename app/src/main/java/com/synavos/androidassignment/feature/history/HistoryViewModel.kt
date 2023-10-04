@@ -2,7 +2,6 @@ package com.synavos.androidassignment.feature.history
 
 import android.content.Context
 import androidx.lifecycle.viewModelScope
-import com.synavos.androidassignment.data.model.RequestException
 import com.synavos.androidassignment.domain.usecase.AgeUsecase
 import com.synavos.androidassignment.ui.base.BaseViewModel
 import com.synavos.androidassignment.ui.state.UiState
@@ -17,7 +16,7 @@ import javax.inject.Inject
 class HistoryViewModel @Inject constructor(
     private val useCase: AgeUsecase,
     @ApplicationContext application: Context
-) : BaseViewModel(application){
+) : BaseViewModel(application) {
 
     fun getHistList() {
         viewModelScope.launch(Dispatchers.IO) {

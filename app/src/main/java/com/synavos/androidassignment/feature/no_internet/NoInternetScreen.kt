@@ -38,11 +38,7 @@ fun NoInternetView(onClick: () -> Unit) {
 
 @Composable
 fun ErrorView(
-    onClick: () -> Unit,
-    title: Int,
-    desc: Int?,
-    btnText: Int,
-    imageSrc: Int
+    onClick: () -> Unit, title: Int, desc: Int?, btnText: Int, imageSrc: Int
 ) {
     Column(
         modifier = Modifier

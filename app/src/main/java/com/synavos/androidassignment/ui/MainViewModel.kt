@@ -12,5 +12,5 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     @ApplicationContext application: Context
 ) : BaseViewModel(application) {
-    var userInput=MutableLiveData<String>("")
+    var userInput = MutableLiveData<String>("")
 }

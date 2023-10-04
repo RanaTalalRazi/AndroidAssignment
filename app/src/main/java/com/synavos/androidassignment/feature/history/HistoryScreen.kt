@@ -64,18 +64,15 @@ fun HistoryScreen(viewModel: HistoryViewModel = hiltViewModel()) {
 
                             is UiState.SUCCESS<*> -> {
                                 val response = state.data as? List<AgeResponse>
-                                if (!response.isNullOrEmpty())
-                                    UserList(usersData = response)
-                                else
-                                    Box(modifier = Modifier.fillMaxSize()) {
-                                        CustomText(
-                                            modifier = Modifier
-                                                .align(Alignment.Center),
-                                            fontSize = 16.nonScaledSp,
-                                            fontWeight = FontWeight.Medium,
-                                            text = stringResource(id = R.string.no_data_found)
-                                        )
-                                    }
+                                if (!response.isNullOrEmpty()) UserList(usersData = response)
+                                else Box(modifier = Modifier.fillMaxSize()) {
+                                    CustomText(
+                                        modifier = Modifier.align(Alignment.Center),
+                                        fontSize = 16.nonScaledSp,
+                                        fontWeight = FontWeight.Medium,
+                                        text = stringResource(id = R.string.no_data_found)
+                                    )
+                                }
 
                             }
 
