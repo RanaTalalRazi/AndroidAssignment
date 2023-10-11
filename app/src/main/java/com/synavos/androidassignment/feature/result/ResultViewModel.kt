@@ -4,11 +4,13 @@ import android.content.Context
 import androidx.lifecycle.viewModelScope
 import com.synavos.androidassignment.data.model.RequestException
 import com.synavos.androidassignment.domain.usecase.AgeUsecase
+import com.synavos.androidassignment.network.DataState
 import com.synavos.androidassignment.ui.base.BaseViewModel
 import com.synavos.androidassignment.ui.state.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -32,7 +34,19 @@ class ResultViewModel @Inject constructor(
     }
 
     fun getAgeFromApi(name: String) {
-        call({
+        viewModelScope.launch{
+            useCase.getAgeFromApi(name).onStart { _uiState.tryEmit(UiState.LOADING) }.collect{
+                when(it){
+                    is DataState.Success->{
+                        _uiState.emit(UiState.SUCCESS(it.data))
+                    }
+                    is DataState.Error->{
+                        _uiState.emit(UiState.ERROR(it.message))
+                    }
+                }
+            }
+        }
+       /* call({
             useCase.getAgeFromApi(name)
         }, onSuccess = { response ->
             viewModelScope.launch {
@@ -44,7 +58,7 @@ class ResultViewModel @Inject constructor(
                 errorState.error = (it as? RequestException)?.message.toString()
                 _uiState.emit(errorState)
             }
-        })
+        })*/
     }
 
 }

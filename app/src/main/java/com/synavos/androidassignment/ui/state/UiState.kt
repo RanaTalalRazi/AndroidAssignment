@@ -8,9 +8,6 @@ sealed class UiState {
     object NORMAL : UiState()
     object OFFLINE : UiState()
     open class SUCCESS<out E>(val data: E? = null) : UiState()
-    open class ERROR(val errorException: RequestException? = null) : UiState() {
-        var error: String? = null
-        var errorCode: Int? = null
-    }
+    open class ERROR(val error: String? = null) : UiState()
 
 }

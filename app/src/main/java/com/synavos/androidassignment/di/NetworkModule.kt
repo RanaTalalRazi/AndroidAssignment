@@ -3,6 +3,7 @@ package com.synavos.androidassignment.di
 import android.util.Log
 import com.synavos.androidassignment.BuildConfig
 import com.synavos.androidassignment.data.service.APIService
+import com.synavos.androidassignment.network.adapter.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
+import javax.inject.Singleton
 
 
 @Module
@@ -27,11 +29,11 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(
         @Named("BaseUrl") baseUrl: String,
+        networkAdapter: ApiResponseCallAdapterFactory,
         okHttpClient: OkHttpClient,
     ): Retrofit {
-
         return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient).baseUrl(baseUrl).build()
+            .addCallAdapterFactory(networkAdapter).client(okHttpClient).baseUrl(baseUrl).build()
     }
 
     @Provides
@@ -59,6 +61,12 @@ object NetworkModule {
 
     @Provides
     fun provideAPIService(retrofit: Retrofit): APIService = retrofit.create(APIService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideNetworkAdapter(): ApiResponseCallAdapterFactory {
+        return ApiResponseCallAdapterFactory()
+    }
 
 
 }
